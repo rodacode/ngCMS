@@ -11,13 +11,13 @@ import { Article } from '../article';
 })
 export class BackofficeComponent implements OnInit {
 
-	articles: Article[];
+	articles:any;
 
 
-  constructor(private _dataService : DataService) { }
+  constructor(private dataService : DataService) { }
 
   ngOnInit(){
-  	  this.getArticles();
+  	 this.articles=this.dataService.getArticles();
       
 
   }

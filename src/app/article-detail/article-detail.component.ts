@@ -17,14 +17,14 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ArticleDetailComponent implements OnInit {
  	articleSelected: Observable<Article>;
-    articleDoc: AngularFirestoreDocument<Article>;
+  articleDoc:any;
 
 
-  constructor(private _dataService : DataService, private route: ActivatedRoute) { }
+  constructor(private dataService : DataService, private route: ActivatedRoute) { }
 
  ngOnInit() {
        this.articleDoc = this.route.params
-        	.switchMap(param => this._dataService.getArticle(param.id));
+      .switchMap(param => this.dataService.getArticle(param.id));
   }
 
 }

@@ -1,63 +1,46 @@
-<div class="row">
-<div class="col-md-3 side-menu back-menu">
-	<p>Welcome</p>
-      <ul class="">
-      <li>
-        <a href="#" class="waves-effect waves-white">
-          <i class="fa fa-desktop" aria-hidden="true"></i>
-          <span class="label">View site</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['articles']}}]" class="waves-effect waves-white">
-          <i class="fa fa-clipboard" aria-hidden="true"></i>
-         <span class="label">Articles</span>
-        </a>
-      </li>      
-      <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['categories']}}]" class="waves-effect waves-white">
-          <i class="fa fa-archive" aria-hidden="true"></i>
-          <span class="label">Categories</span>
-        </a>
-      </li>
-       <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['tags']}}]" class="waves-effect waves-white">
-          <i class="fa fa-archive" aria-hidden="true"></i>
-          <span class="label">Tags</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['images']}}]" class="waves-effect waves-white">
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-          <span class="label">Images</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['seo']}}]" class="waves-effect waves-white">
-          <i class="fa fa-line-chart" aria-hidden="true"></i>
-        <span class="label">SEO</span></a>
-      </li>
-       <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['users']}}]" class="waves-effect waves-white">
-        <i class="fa fa-user" aria-hidden="true"></i><span class="label">Users</span>
-        </a>
-      </li>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav id="sidenav" mode="side">    
+  <mat-list>
+    <mat-list-item>
+        <button color="accent" mat-button matTooltip="Home" routerLink="/home"><mat-icon>home</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button"  mat-button matTooltip="Coupon" routerLink="/">
+    <mat-icon>receipt</mat-icon>View Site</button></mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button"  mat-button matTooltip="Coupon" routerLink="/coursesList"><mat-icon>receipt</mat-icon>Articles</button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button"  mat-button matTooltip="Coupon" routerLink="/subscriptionsList"><mat-icon>receipt</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button"  mat-button matTooltip="Coupon" routerLink="/form1"><mat-icon>receipt</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button" mat-button matTooltip="Coupon" routerLink="/form2"><mat-icon>receipt</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button" mat-button matTooltip="Help" routerLink="/about"><mat-icon>help</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button" mat-button matTooltip="Help" routerLink="/about"><mat-icon>help</mat-icon></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button color="accent" class="sidenav-button" mat-button matTooltip="Help" routerLink="/about"><mat-icon>help</mat-icon></button>
+    </mat-list-item>
+  </mat-list>
+</mat-sidenav>
 
-      <li>
-        <a [routerLink]="['/admin', {outlets: {'back-roulet': ['settings']}}]"  class="waves-effect waves-white">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-          <span class="label">Settings</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="waves-effect waves-grey">
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
-          <span class="label">Exit</span>
-        </a>
-      </li>
-    </ul>
-</div>
-<div class="col-md-8 back-container">
-<router-outlet name="back-roulet"></router-outlet>
-</div>
+  <mat-toolbar>
+    <div class="filler"></div>
+    <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet name="back-roulet"></router-outlet>
+  </div>
+  
+</mat-sidenav-container>
 
