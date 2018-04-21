@@ -17,23 +17,7 @@ export class BackofficeComponent implements OnInit {
   constructor(private dataService : DataService) { }
 
   ngOnInit(){
-  	 this.articles=this.dataService.getArticles();
-      
-
-  }
-
-    handleSuccessNews(data){
-    this.articles = data;
-    console.log(this.articles);	  
-  }
-  handleErrorNews(error){
-    console.log(error);
-  }
-  getArticles(){
-    return this._dataService.getArticles().subscribe(
-    data => this.handleSuccessNews(data),
-    error => this.handleErrorNews(error)
-    )
+  	this.articles= this.articles=this.dataService.getArticles();     
   }
 
 }

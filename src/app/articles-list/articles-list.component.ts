@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 import { Article } from '../article';
 
 
@@ -8,11 +9,13 @@ import { Article } from '../article';
   styleUrls: ['./articles-list.component.css']
 })
 export class ArticlesListComponent implements OnInit {
+  articles:any;
 
-
-  constructor() { }
+  constructor(private dataService : DataService) { }
 
   ngOnInit() {
+    this.articles =  this.dataService.getArticles();
+
   }
 
 }

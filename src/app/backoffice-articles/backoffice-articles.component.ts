@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup , FormGroupDirective, NgForm, FormBuilder,Validators, FormControl} from '@angular/forms';
 import { TinyEditorComponent } from '../tiny-editor/tiny-editor.component';
-import { 
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument 
-} from 'angularfire2/firestore';
-
 
 import { Article } from '../article';
 
@@ -17,34 +11,36 @@ import { Article } from '../article';
   styleUrls: ['./backoffice-articles.component.css']
 })
 export class BackofficeArticlesComponent implements OnInit {
-  form;
+  form:FormGroup;
  	articles: any;
-  articlesCollection: AngularFirestoreCollection<Article>;
 
-  constructor(private dataService : DataService) { }
+  constructor(private dataService : DataService, private formBuilder: FormBuilder) { }
 
   ngOnInit(){
-  	   this.dataService.getArticles().subscribe(articles => {
-      //console.log(tasks);
-      this.articles = articles;
+    this.articles =  this.dataService.getArticles();
+    this.buildForm();
+  }
+  public buildForm(){
+    this.form = this.formBuilder.group({
+      title:['', [Validators.required,Validators.minLength(2)]],
+      category:['', [Validators.required, Validators.minLength(2)]],
+      tags:['', [Validators.required]],
+      content:['', [Validators.required, Validators.minLength(2)]],
+      image:[''] 
     });
     
-  }
-  
-  /*
-  this.form = new FormGroup({
-    title: new FormControl(''),
-    category: new FormControl(''),
-    tags: new FormControl(''),
-    content: new FormControl(''),
-    image: new FormControl('')
-  });
-*/
-  
+}
+public onSubmit(){
 
-  onSubmit(this.form) {
-    console.log(this.form);
+  if (this.form.valid) {
+    console.log(this.form.value);
+    this.dataService.addArticle(this.form.value);
+  } else {
+    console.log('form is not valid, cannot save to database')
+
   }
+
+}
   
 }
 

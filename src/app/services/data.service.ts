@@ -18,8 +18,8 @@ export class DataService {
   articleDoc: AngularFirestoreDocument<Article>;
 	articlesCollection: AngularFirestoreCollection<Article>;
 
-    constructor(public afs:AngularFirestore) {
-    	this.articlesCollection = this.afs.collection('articles', ref => ref.orderBy('title'));
+    constructor(public db:AngularFirestore) {
+    	this.articlesCollection = this.db.collection('articles', ref => ref.orderBy('title'));
     }
     	
   
@@ -36,7 +36,7 @@ export class DataService {
   };
 
   	getArticle(id: string) {
-    return this.afs.doc(`articles/${id}`).snapshotChanges().map(snap => {
+    return this.db.doc(`articles/${id}`).snapshotChanges().map(snap => {
       const data = snap.payload.data() as Article;
       const id = snap.payload.id;
       return { id, ...data };
@@ -49,17 +49,17 @@ export class DataService {
     this.articleToEdit = article;
   }
 
-   addArticle(article: Article) {
-    this.articlesCollection.add(article);
+   addArticle(val) {
+    this.db.collection('articles').add(val);
   }
 
   deleteArticle(article: Article) {
-    this.articleDoc = this.afs.doc(`articles/${article.id}`);
+    this.articleDoc = this.db.doc(`articles/${article.id}`);
     this.articleDoc.delete();
   }
 
   updateTask(article: Article) {
-    this.articleDoc = this.afs.doc(`articles/${article.id}`);
+    this.articleDoc = this.db.doc(`articles/${article.id}`);
     this.articleDoc.update(article);
 }
 

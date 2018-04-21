@@ -13,24 +13,19 @@ import { BackofficeImagesComponent } from './backoffice-images/backoffice-images
 import { BackofficeSeoComponent } from './backoffice-seo/backoffice-seo.component';
 
 
-
-
-
 const routes: Routes = [
-  {
-    path: '',
-    component: FrontofficeComponent
-  },
+  { path: '', component: FrontofficeComponent, pathMatch: 'full'},
   { path: 'articles/:id', component: ArticleDetailComponent },
-  
+
+
   { path: 'admin', component: BackofficeComponent, children:[
-    {path: 'articles', component: BackofficeArticlesComponent, outlet:'back-roulet'},
-  	{path: 'categories', component: BackofficeCategoriesComponent, outlet:'back-roulet'},
-    {path: 'tags', component: BackofficeTagsComponent, outlet:'back-roulet'},
-    {path: 'images', component: BackofficeImagesComponent, outlet:'back-roulet'},
-    {path: 'seo', component: BackofficeSeoComponent, outlet:'back-roulet'},
-  	{path: 'users', component: BackofficeUsersComponent, outlet:'back-roulet'},
-  	{path: 'settings', component: BackofficeSettingsComponent, outlet:'back-roulet'}] }
+    {path: 'articles', component: BackofficeArticlesComponent, pathMatch: 'full'},
+  	{path: 'categories', component: BackofficeCategoriesComponent},
+    {path: 'tags', component: BackofficeTagsComponent},
+    {path: 'images', component: BackofficeImagesComponent},
+    {path: 'seo', component: BackofficeSeoComponent},
+  	{path: 'users', component: BackofficeUsersComponent},
+  	{path: 'settings', component: BackofficeSettingsComponent}] }
 ];
 
 @NgModule({
@@ -38,3 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

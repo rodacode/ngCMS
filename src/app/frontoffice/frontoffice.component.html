@@ -14,7 +14,7 @@
 			<h2 class="text-center">ARTICLES</h2>
 		</div>
 	</div>
-		<article *ngFor = "let article of articles">
+		<article *ngFor = "let article of articles | async">
 			<div class="col-md-12 articleTitle">
 				<h2 class="text-center" ><a [routerLink]="['/articles', article.id]">{{article.title}}</a></h2>
 			</div>

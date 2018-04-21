@@ -1,4 +1,4 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 li {
 
@@ -86,4 +86,42 @@ padding: 0 10px;
 }
 .save{
 	text-align: center;
+}
+
+body, html, .mat-sidenav-container {
+	height:100vh;
+}
+
+body {
+/*  margin: 0px;*/
+  background:#efefef;
+}
+/*
+.flexbox {
+  display:flex;
+}
+*/
+#sidenav{
+	padding-top: 100px;
+
+}
+.sidenav-button{
+	padding-bottom: 140px;
+}
+.filler {
+  visibility: hidden;
+  flex-grow: 0;
+}
+
+#top-menu{
+	margin:0 auto;
+
+}
+.form-card{
+  width:40vw;
+  margin:40px auto;
+}
+
+.form-container{
+	margin:20px auto;
 }
