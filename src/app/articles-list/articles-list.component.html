@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+  <h1>
+    NG 4 CMS
+  </h1>
+  <p>Made by Nicolás Hardmeier</p> 
+  <button type="button"><a routerLink="/admin" routerLinkActive="active">Go to Back Office</a></button>
+</div>
+<div class="col-md-12">
+	<div class="text-center" *ngFor="let article of articles" >
+	 	<h1 ><a [routerLink]="['/article-detail', article.id]">{{article.title}}</a></h1>
+	 	<p>{{articleDoc.content}}</p>
+	</div>
+</div>

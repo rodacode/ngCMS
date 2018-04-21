@@ -1,0 +1,12 @@
+<div class="row top-panel">
+  <button class="view-site" type="button"><a routerLink="/admin" routerLinkActive="active">Go to Back Office</a></button>
+</div>
+<div class="col-md-12">
+	<div class="text-center" >
+	 	<h1>{{(articleDoc | async)?.title}}</h1>
+	 	<p>{{(articleDoc | async)?.content}}</p>
+	 	<div class="col-md-6 image container">
+			<img src="{{(articleDoc| async)?.image}}" class="article-img">
+		</div>
+	</div>
+</div>
