@@ -16,11 +16,9 @@
   </div>
 </form>
 </div>
-<hr>
-  <div class="row category-title">
-    <h2 class="text-center">tags</h2>
-  </div>
-
-<p *ngFor = "let tag of tags">
-{{tag}}
-<p>
+<mat-card>
+  <h2 class="text-center">Tags</h2>
+<div *ngFor="let tag of tags | async">
+  <button mat-raised-button>{{tag.name}}</button>
+</div>
+</mat-card>

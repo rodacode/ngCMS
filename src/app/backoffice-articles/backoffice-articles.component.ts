@@ -3,7 +3,7 @@ import { DataService } from '../services/data.service';
 import { FormGroup , FormGroupDirective, NgForm, FormBuilder,Validators, FormControl} from '@angular/forms';
 import { TinyEditorComponent } from '../tiny-editor/tiny-editor.component';
 
-import { Article } from '../article';
+import { Article } from '../models/article';
 
 @Component({
   selector: 'app-backoffice-articles',

@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -10,16 +11,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class BackofficeTagsComponent implements OnInit {
   formTag;
 
-  tags=['nerds','code','angular','node js', 'javascript', 'typescript'];
+	tags:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
-
+      this.tags = this.dataService.getTags();
       this.formTag = new FormGroup({
       tag: new FormControl('')
-  });
-
+    });
   }
 
 }

@@ -6,7 +6,10 @@ import {
   AngularFirestoreDocument 
 } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Article } from '../article';
+import { Article } from '../models/article';
+import { Category } from '../models/category';
+import { Tag } from '../models/tag';
+
 
 import 'rxjs/add/operator/map';
 
@@ -16,10 +19,15 @@ export class DataService {
   editState: boolean = false;
   articleToEdit: Article;
   articleDoc: AngularFirestoreDocument<Article>;
-	articlesCollection: AngularFirestoreCollection<Article>;
+  articlesCollection: AngularFirestoreCollection<Article>;
+  categoriesCollection: AngularFirestoreCollection<Category>;
+  tagsCollection: AngularFirestoreCollection<Tag>;
 
     constructor(public db:AngularFirestore) {
-    	this.articlesCollection = this.db.collection('articles', ref => ref.orderBy('title'));
+      this.articlesCollection = this.db.collection('articles', ref => ref.orderBy('title'));
+      this.categoriesCollection = this.db.collection('categories', ref => ref.orderBy('name'));
+      this.tagsCollection = this.db.collection('tags', ref => ref.orderBy('name'));
+
     }
     	
   
@@ -63,9 +71,31 @@ export class DataService {
     this.articleDoc.update(article);
 }
 
+//Categories
+getCategories() {
+  return this.categoriesCollection.snapshotChanges().map(arr => {
+    return arr.map(snap => {
+      const data = snap.payload.doc.data() as Category;
+      const id = snap.payload.doc.id;
+      return { id, ...data };
+    });
+  });
+};
+
+
+
+//Tags
+getTags() {
+  return this.tagsCollection.snapshotChanges().map(arr => {
+    return arr.map(snap => {
+      const data = snap.payload.doc.data() as Tag;
+      const id = snap.payload.doc.id;
+      return { id, ...data };
+    });
+  });
+};
+
 }
-
-
 
 
 

@@ -1,26 +1,24 @@
-  <i class="fa fa-plus-square" aria-hidden="true"></i><button type="btn" ng-model="showForm" ng-init="showForm" (click)="showForm = !showForm" class="btn btn-primary new-article">New Category</button>
-  <div *ngIf="showForm" class="new-article-container">
-    <form
+<i class="fa fa-plus-square" aria-hidden="true"></i><button type="btn" ng-model="showForm" ng-init="showForm" (click)="showForm = !showForm" class="btn btn-primary new-article">New Category</button>
+<div *ngIf="showForm" class="new-article-container">
+  <form
   [formGroup]="formCategory"
   (ngSubmit)="onSubmit(formCategory.value)">
-  <div class="row">
-    <div class="col-md-4">
-      <label for="category">Category</label>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="category">Category</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" name="title" id="title" formControlName="title">
+      </div>
     </div>
-    <div class="col-md-8">
-      <input type="text" name="title" id="title" formControlName="title">
+    <div class="col-md-12 text-center saveRow">
+      <button class="save btn btn-primary" type="submit">Save</button>
     </div>
-  </div>
-  <div class="col-md-12 text-center saveRow">
-  	<button class="save btn btn-primary" type="submit">Save</button>
-  </div>
-</form>
+  </form>
 </div>
-<hr>
-<div class="row category-title">
+<mat-card>
     <h2 class="text-center">Categories</h2>
+  <div *ngFor="let category of categories | async">
+    <button mat-raised-button>{{category.name}}</button>
   </div>
-
-<p *ngFor = "let category of categories">
-{{category}}
-<p>
+</mat-card>

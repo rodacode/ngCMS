@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -10,12 +11,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class BackofficeCategoriesComponent implements OnInit {
   formCategory;
 
-	categories=['dev','mac','angular','node js'];
+	categories:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
-
+      this.categories = this.dataService.getCategories();
       this.formCategory = new FormGroup({
       category: new FormControl('')
     });
