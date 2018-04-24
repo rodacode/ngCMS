@@ -83,6 +83,9 @@ getCategories() {
 };
 
 
+addCategory(val) {
+  this.db.collection('categories').add(val);
+}
 
 //Tags
 getTags() {
@@ -95,6 +98,10 @@ getTags() {
   });
 };
 
+
+addTag(val) {
+  this.db.collection('tags').add(val);
+}
 }
 
 

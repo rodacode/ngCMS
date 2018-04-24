@@ -1,6 +1,6 @@
 import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup , FormGroupDirective, NgForm, FormBuilder,Validators, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -9,18 +9,32 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./backoffice-categories.component.css']
 })
 export class BackofficeCategoriesComponent implements OnInit {
-  formCategory;
-
+  formCategory:FormGroup;
 	categories:any;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService : DataService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
       this.categories = this.dataService.getCategories();
-      this.formCategory = new FormGroup({
-      category: new FormControl('')
+      this.buildForm();
+  }
+  public buildForm(){
+    this.formCategory = this.formBuilder.group({
+      name:['', [Validators.required,Validators.minLength(2)]],
+     
     });
+    
+}
+public onSubmit(){
+
+  if (this.formCategory.valid) {
+    console.log(this.formCategory.value);
+    this.dataService.addCategory(this.formCategory.value);
+  } else {
+    console.log('form is not valid, cannot save to database')
 
   }
 
+}
+  
 }

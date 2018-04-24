@@ -1,21 +1,21 @@
-  <i class="fa fa-plus-square" aria-hidden="true"></i><button type="btn" ng-model="showForm" ng-init="showForm" (click)="showForm = !showForm" class="btn btn-primary new-article">New Tag</button>
-  <div *ngIf="showForm" class="new-article-container">
-    <form
-  [formGroup]="formTag"
-  (ngSubmit)="onSubmit(formTag.value)">
-    <div class="row">
-    <div class="col-md-4">
-      <label for="tag">Tag</label>
-    </div>
-    <div class="col-md-8">
-      <input type="text" name="title" id="title" formControlName="title">
-    </div>
-  </div>
-  <div class="col-md-12 text-center saveRow">
-  	<button class="save btn btn-primary" type="submit">Save</button>
-  </div>
-</form>
+<i class="fa fa-plus-square" aria-hidden="true"></i><button type="btn" ng-model="showForm" ng-init="showForm" (click)="showForm = !showForm" class="btn btn-primary new-article">New Tag</button>
+<div *ngIf="showForm" class="new-article-container">
+  <mat-card class="form-card">
+    <div class="form-container">
+      <h3 class="text-center">Add new tag</h3>
+            <form [formGroup]="formTag" (ngSubmit)="onSubmit()" class="formTag" novalidate>
+              <mat-form-field class="title">
+                <input matInput placeholder="name" formControlName="name">
+                <mat-error align="start" *ngIf="invalid && (dirty || touched)" class="form__error">title is invalid</mat-error>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button type="submit">Add tag</button>
+            </form>
+          </div>
+        </mat-card>
 </div>
+
+<hr>
 <mat-card>
   <h2 class="text-center">Tags</h2>
 <div *ngFor="let tag of tags | async">
