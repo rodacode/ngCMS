@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 li {
 
@@ -123,4 +123,12 @@ body {
 
 .form-container{
 	margin:20px auto;
+}
+.mat-button{
+color:#284a6c!important;
+}
+
+.items{
+	width:100px;
+	margin:10px auto;
 }

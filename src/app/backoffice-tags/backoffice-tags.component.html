@@ -18,7 +18,9 @@
 <hr>
 <mat-card>
   <h2 class="text-center">Tags</h2>
-<div *ngFor="let tag of tags | async">
-  <button mat-raised-button>{{tag.name}}</button>
-</div>
+  <div *ngFor="let tag of tags | async">
+    <div class="items">
+      <button mat-raised-button>{{tag.name}}</button>
+    </div>
+  </div>
 </mat-card>

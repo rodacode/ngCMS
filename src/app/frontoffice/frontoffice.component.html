@@ -1,5 +1,5 @@
 <div class="row top-panel">
-  <button mat-raised-button class="view-site"><a routerLink="/admin" routerLinkActive="active">Go to Back Office</a></button>
+  <button mat-raised-button class="view-site"><a routerLink="/admin/articles" routerLinkActive="active">Go to Back Office</a></button>
 </div>
 <div class="jumbotron text-center">
 	<mat-card>
@@ -19,19 +19,19 @@
 				<div class="col-md-12 articleTitle">
 					<h2 class="text-center" ><a [routerLink]="['/articles', article.id]">{{article.title}}</a></h2>
 				</div>
-					<div class="row">
-						<div class="col-md-4 image container">
-							<img src="{{article.image}}" class="article-img">
+				<div class="row">
+					<div class="col-md-4 image container">
+						<img src="{{article.image}}" class="article-img">
+					</div>
+					<div class="col-md-8">
+						<p>{{article.content}}</p>
+						<div class="tags" *ngFor="let tag of article.tags">
+							<button mat-button>{{tag}</button>
 						</div>
-						<div class="col-md-8">
-							<p>{{article.content}}</p>
-							<div class="tags" *ngFor="let tag of article.tags">
-									<button mat-button>{{tag}</button>
-							</div>
-							<div class="readMore">
-									<button mat-raised-button><a routerLink="['/articles', article.id]" routerLinkActive="active">Read more...</a></button>
-							</div>
+						<div class="readMore">
+							<button mat-raised-button><a [routerLink]="['/articles', article.id]">Read more...</a></button>
 						</div>
+					</div>
 				</div>
 			</mat-card>
 		</article>

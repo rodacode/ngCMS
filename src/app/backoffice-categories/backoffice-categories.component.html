@@ -18,7 +18,9 @@
 <hr>
 <mat-card>
     <h2 class="text-center">Categories</h2>
-  <div *ngFor="let category of categories | async">
-    <button mat-raised-button>{{category.name}}</button>
+  <div class="col-md-12" *ngFor="let category of categories | async">
+    <div class="items">
+      <button mat-raised-button>{{category.name}}</button>
+    </div>
   </div>
 </mat-card>

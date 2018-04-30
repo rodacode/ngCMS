@@ -1,12 +1,23 @@
 <div class="row top-panel">
   <button class="view-site" type="button"><a routerLink="/admin" routerLinkActive="active">Go to Back Office</a></button>
 </div>
-<div class="col-md-12">
-	<div class="text-center" >
-	 	<h1>{{(articleDoc | async)?.title}}</h1>
-	 	<p>{{(articleDoc | async)?.content}}</p>
-	 	<div class="col-md-6 image container">
-			<img src="{{(articleDoc| async)?.image}}" class="article-img">
+<div class="col-md-12 articleDetail">
+	<mat-card>
+		<div class="row" >
+			<div class="col-md-12">
+		 		<h1 class="text-center">{{(articleDoc | async)?.title}}</h1>
+			</div>
 		</div>
+		<div class="row" >
+			<div class="col-md-4 image container">
+				<img src="{{(articleDoc| async)?.image}}" class="article-img">
+			</div>
+			<div class="col-md-8">
+	 			<p>{{(articleDoc | async)?.content}}</p>
+			</div>
+		</div>
+	</mat-card>
+	<div class="backtoArticles">
+			<button mat-raised-button><a routerLink="/">Back to Articles</a></button>
 	</div>
 </div>
